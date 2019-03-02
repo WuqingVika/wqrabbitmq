@@ -17,6 +17,7 @@ public class Consumer {
         ConnectionFactory connectionFactory = new ConnectionFactory();
         connectionFactory.setHost("123.207.2.127");
         connectionFactory.setPort(5757);
+        connectionFactory.setVirtualHost("/");
         /*connectionFactory.setHost("http://tacwt7.natappfree.cc");
         connectionFactory.setVirtualHost("/");//默认是斜杠*/
         // connectionFactory.setConnectionTimeout(50000);

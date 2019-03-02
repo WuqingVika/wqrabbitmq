@@ -19,6 +19,7 @@ public class Producer {
         connectionFactory.setVirtualHost("/");//默认是斜杠*/
         connectionFactory.setHost("123.207.2.127");
         connectionFactory.setPort(5757);
+        connectionFactory.setVirtualHost("/");
         //2.通过连接工厂创建连接
         Connection connection = connectionFactory.newConnection();
         //3.通过connection创建一个Channel
