@@ -6,7 +6,10 @@
 	<groupId>com.wq</groupId>
 	<artifactId>wqrabbitmq</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<!--<modules>
+		<module>wqrabbitmq-spring</module>
+	</modules>-->
+	<packaging>pom</packaging>
 
 	<name>wqrabbitmq</name>
 	<description>rabbitmq learn</description>
