@@ -34,13 +34,6 @@ public class RabbitMQConfig {
 	}
 	
 
-
-//    @Bean
-//    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
-//    	RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-//    	return rabbitTemplate;
-//    }
-
 	/**
 	 * 针对消费者配置
 	 * 1. 设置交换机类型
@@ -100,6 +93,10 @@ public class RabbitMQConfig {
 		return new Queue("pdf_queue", true); //队列持久
 	}
 
-
+	@Bean
+	public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+		RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+		return rabbitTemplate;
+	}
 
 }
