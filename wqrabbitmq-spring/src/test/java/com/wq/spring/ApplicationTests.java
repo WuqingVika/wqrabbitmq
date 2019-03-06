@@ -86,10 +86,22 @@ public class ApplicationTests {
         MessageProperties messageProperties = new MessageProperties();
         messageProperties.setContentType("text/plain");
         Message message = new Message("mq 消息1234".getBytes(), messageProperties);
-
         rabbitTemplate.send("topic001", "spring.abc", message);
-
         rabbitTemplate.convertAndSend("topic001", "spring.amqp", "hello object message send!");
         rabbitTemplate.convertAndSend("topic002", "rabbit.abc", "hello object message send!");
     }
+
+    @Test
+    public void testSendMessage4Text() throws Exception {
+        //1 创建消息
+        //Thread.sleep(3000);
+        MessageProperties messageProperties = new MessageProperties();
+        messageProperties.setContentType("text/plain");
+        Message message = new Message("mq11 消息1234".getBytes(), messageProperties);
+        Message message2 = new Message("mq22 消息1234---(2)".getBytes(), messageProperties);
+       rabbitTemplate.send("topic002", "rabbit.abc", message2);
+        rabbitTemplate.send("topic001", "spring.abc", message);
+
+    }
+
 }
