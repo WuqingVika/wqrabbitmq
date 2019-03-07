@@ -1,5 +1,8 @@
 package com.wq.spring.adapter;
 
+import com.wq.spring.entity.Order;
+import com.wq.spring.entity.Packaged;
+
 import java.io.File;
 import java.util.Map;
 
@@ -32,9 +35,21 @@ public class MessageDelegate {
 
 
     public void consumeMessage(Map messageBody) {
-        System.err.println("map方法, 消息内容:" + messageBody);
+        System.err.println("This is map方法, 消息内容:" + messageBody);
     }
 
+
+    public void consumeMessage(Order order) {
+        System.err.println("order对象, 消息内容, id: " + order.getId() +
+                ", name: " + order.getName() +
+                ", content: "+ order.getContent());
+    }
+
+    public void consumeMessage(Packaged pack) {
+        System.err.println("package对象, 消息内容, id: " + pack.getId() +
+                ", name: " + pack.getName() +
+                ", content: "+ pack.getDescription());
+    }
 
     public void consumeMessage(File file) {
         System.err.println("文件对象 方法, 消息内容:" + file.getName());
