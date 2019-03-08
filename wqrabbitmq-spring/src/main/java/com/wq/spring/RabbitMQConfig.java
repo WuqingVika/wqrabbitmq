@@ -189,7 +189,7 @@ public class RabbitMQConfig {
 
 
 		//1.3 DefaultJackson2JavaTypeMapper & Jackson2JsonMessageConverter 支持java对象多映射转换----测试方法testSendMappingMessage
-		 MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
+		 /*MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
 		 adapter.setDefaultListenerMethod("consumeMessage");
 		 Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
 		 DefaultJackson2JavaTypeMapper javaTypeMapper = new DefaultJackson2JavaTypeMapper();
@@ -202,11 +202,11 @@ public class RabbitMQConfig {
 
 		 jackson2JsonMessageConverter.setJavaTypeMapper(javaTypeMapper);
 		 adapter.setMessageConverter(jackson2JsonMessageConverter);
-		 container.setMessageListener(adapter);
+		 container.setMessageListener(adapter);*/
 
 		//1.4 ext convert
 
-		/*MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
+		MessageListenerAdapter adapter = new MessageListenerAdapter(new MessageDelegate());
 		adapter.setDefaultListenerMethod("consumeMessage");
 
 		//全局的转换器:
@@ -231,7 +231,7 @@ public class RabbitMQConfig {
 
 
 		adapter.setMessageConverter(convert);
-		container.setMessageListener(adapter);*/
+		container.setMessageListener(adapter);
 
 		//wq 20190307 end
 

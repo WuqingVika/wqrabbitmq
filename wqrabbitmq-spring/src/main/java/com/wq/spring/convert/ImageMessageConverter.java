@@ -26,8 +26,8 @@ public class ImageMessageConverter implements MessageConverter {
 		String extName = _extName == null ? "png" : _extName.toString();
 		
 		byte[] body = message.getBody();
-		String fileName = UUID.randomUUID().toString();
-		String path = "d:/010_test/" + fileName + "." + extName;
+		String fileName = UUID.randomUUID().toString();//D:\wqsoftware\wqdoc 是已经存在的文件夹
+		String path = "d:/wqsoftware/wqdoc/" + fileName + "." + extName;
 		File f = new File(path);
 		try {
 			Files.copy(new ByteArrayInputStream(body), f.toPath());

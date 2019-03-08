@@ -184,19 +184,19 @@ public class ApplicationTests {
     }
 
     @Test
-    public void testSendExtConverterMessage() throws Exception {
-        byte[] body = Files.readAllBytes(Paths.get("d:/002_books", "picture.png"));
+    public void testSendExtConverterMessage() throws Exception {//D:\wqsoftware\wqdoc
+        /*byte[] body = Files.readAllBytes(Paths.get("d:/wqsoftware/wqdoc", "deskpic.png"));
         MessageProperties messageProperties = new MessageProperties();
         messageProperties.setContentType("image/png");
         messageProperties.getHeaders().put("extName", "png");
         Message message = new Message(body, messageProperties);
-        rabbitTemplate.send("", "image_queue", message);
+        rabbitTemplate.send("", "image_queue", message);*/
 
-        /*byte[] body = Files.readAllBytes(Paths.get("d:/002_books", "mysql.pdf"));
+        byte[] body = Files.readAllBytes(Paths.get("d:/wqsoftware/wqdoc", "test2019.pdf"));
         MessageProperties messageProperties = new MessageProperties();
         messageProperties.setContentType("application/pdf");
         Message message = new Message(body, messageProperties);
-        rabbitTemplate.send("", "pdf_queue", message);*/
+        rabbitTemplate.send("", "pdf_queue", message);
     }
 
 
