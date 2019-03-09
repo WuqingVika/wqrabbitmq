@@ -1,8 +1,12 @@
-Hello大家好，This is 小吴学习Rabbitmq之路!
-rabbitmq-api 为基础api与高级特性源码
-rabbitmq-spring 为整合springamqp框架源码
-rabbitmq-springboot-producer & rabbitmq-springboot-consumer 为整合springboot框架源码
-rabbitmq-springcloudstream-producer & rabbitmq-springcloudstream-consumer 为整合spring cloud stream源码
+## Hello，This is 小吴学习Rabbitmq之路!
+> - rabbitmq-api 
+>    - 为基础api与高级特性源码
+> - rabbitmq-spring 
+>  - 为整合springamqp框架源码
+> - rabbitmq-springboot-producer & rabbitmq-springboot-consumer 
+>   - 为整合springboot框架源码
+> - rabbitmq-springcloudstream-producer & rabbitmq-springcloudstream-consumer 
+>    - 为整合spring cloud stream源码
 
 ### 一、下载安装（初学者绿色安装）
 - 准备:
