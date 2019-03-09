@@ -12,6 +12,9 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import com.rabbitmq.client.Channel;
+
+import java.util.Map;
+
 @Component
 public class RabbitReceiver {
 
@@ -30,6 +33,42 @@ public class RabbitReceiver {
         System.err.println("----------------消费端----------------------");
         System.err.println("消费端Payload: " + message.getPayload());
         Long deliveryTag = (Long) message.getHeaders().get(AmqpHeaders.DELIVERY_TAG);
+        //手工ACK
+        channel.basicAck(deliveryTag, false);
+    }
+
+
+    /**
+     *  通过配置文件获取 相关配置属性
+     * 	spring.rabbitmq.listener.order.queue.name=queue-2
+     spring.rabbitmq.listener.order.queue.durable=true
+     spring.rabbitmq.listener.order.exchange.name=exchange-1
+     spring.rabbitmq.listener.order.exchange.durable=true
+     spring.rabbitmq.listener.order.exchange.type=topic
+     spring.rabbitmq.listener.order.exchange.ignoreDeclarationExceptions=true
+     spring.rabbitmq.listener.order.key=springboot.*
+     * @param order
+     * @param channel
+     * @param headers
+     * @throws Exception
+     */
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue(value = "${spring.rabbitmq.listener.order.queue.name}",
+                    durable="${spring.rabbitmq.listener.order.queue.durable}"),
+            exchange = @Exchange(value = "${spring.rabbitmq.listener.order.exchange.name}",
+                    durable="${spring.rabbitmq.listener.order.exchange.durable}",
+                    type= "${spring.rabbitmq.listener.order.exchange.type}",
+                    ignoreDeclarationExceptions = "${spring.rabbitmq.listener.order.exchange.ignoreDeclarationExceptions}"),
+            key = "${spring.rabbitmq.listener.order.key}"
+    )
+    )
+    @RabbitHandler
+    public void onOrderMessage(@Payload com.wq.springboot.entity.Order order,
+                               Channel channel,
+                               @Headers Map<String, Object> headers) throws Exception {
+        System.err.println("--------------------------------------");
+        System.err.println("消费端order: " + order.getId());
+        Long deliveryTag = (Long)headers.get(AmqpHeaders.DELIVERY_TAG);
         //手工ACK
         channel.basicAck(deliveryTag, false);
     }

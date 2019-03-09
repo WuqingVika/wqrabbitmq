@@ -1,5 +1,6 @@
 package com.wq.springboot;
 
+import com.wq.springboot.entity.Order;
 import com.wq.springboot.producer.RabbitSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,5 +33,11 @@ public class ApplicationTests {
         properties.put("number", "12345");
         properties.put("send_time", simpleDateFormat.format(new Date()));
         rabbitSender.send("Hello RabbitMQ For Spring Boot!", properties);
+    }
+
+    @Test
+    public void testSender2() throws Exception {
+        Order order = new Order("001", "第一个订单");
+        rabbitSender.sendOrder(order);
     }
 }

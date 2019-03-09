@@ -1,6 +1,7 @@
 package com.wq.springboot.producer;
 
 //import org.springframework.amqp.rabbit.connection.CorrelationData;
+import com.wq.springboot.entity.Order;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.core.RabbitTemplate.ConfirmCallback;
 import org.springframework.amqp.rabbit.core.RabbitTemplate.ReturnCallback;
@@ -52,6 +53,14 @@ public class RabbitSender {
         Object result = rabbitTemplate.convertSendAndReceive("exchange-1", "springboot.abc", msg, correlationData);//convertAndSend发送ack失败
         // 但是用convertSendAndReceive 可以
         // rabbitTemplate.convertAndSend("exchange-1", "springboot.abc", msg, correlationData);//这个是无返回结果的。
+    }
 
+    //发送消息方法调用: 构建自定义对象消息
+    public void sendOrder(Order order) throws Exception {
+        rabbitTemplate.setConfirmCallback(confirmCallback);
+        rabbitTemplate.setReturnCallback(returnCallback);
+        //id + 时间戳 全局唯一
+        CorrelationData correlationData = new CorrelationData("0987654321");
+        rabbitTemplate.convertSendAndReceive("exchange-2", "springboot.def", order, correlationData);
     }
 }
