@@ -1,4 +1,10 @@
-一、下载安装（初学者绿色安装）
+Hello大家好，This is 小吴学习Rabbitmq之路!
+rabbitmq-api 为基础api与高级特性源码
+rabbitmq-spring 为整合springamqp框架源码
+rabbitmq-springboot-producer & rabbitmq-springboot-consumer 为整合springboot框架源码
+rabbitmq-springcloudstream-producer & rabbitmq-springcloudstream-consumer 为整合spring cloud stream源码
+
+### 一、下载安装（初学者绿色安装）
 - 准备:
 
 > yum install build-essential openssl openssl-devel unixODBC unixODBC- devel make gcc gcc-c++ kernel-devel m4 ncurses-devel tk tc xz
@@ -15,12 +21,9 @@ vi /etc/hosts 修改原hostname为 newname
 vi /etc/sysconfig/network 修改原hostname为 
 newname , reboot重启后也生效
 --------------------- 
-作者：小小工匠 
-来源：CSDN 
-原文：https://blog.csdn.net/yangshangwei/article/details/52878530 
-版权声明：本文为博主原创文章，转载请附上博文链接！
+
 - 安装
-> 第1步：rpm -ivh erlang....rpm
+> 第1步：rpm -ivh [erlang-18.3-1.el7.centos.x86_64.rpm](http://www.rabbitmq.com/releases/erlang/erlang-18.3-1.el7.centos.x86_64.rpm)
 > 第2步：rpm -ivh socat....rpm
 > 第3步：rpm -ivh rabbitmq....rpm
 ![安装步骤](https://upload-images.jianshu.io/upload_images/2836779-d7c7f09b2fef709e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -40,11 +43,30 @@ newname , reboot重启后也生效
 停止: rabbitmqctl app_stop
 查看已安装的插件列表：rabbitmq-plugins list
 使用管理插件: rabbitmq-plugins enable rabbitmq_management
-登录通过一开始设定的账号密码guest/guest登录即可。
-![管控台](https://upload-images.jianshu.io/upload_images/2836779-c956157e49cbdfac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+登录通过一开始设定的账号密码guest/guest登录即可。![管控台](https://upload-images.jianshu.io/upload_images/2836779-c956157e49cbdfac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-二、简单命令
+### 二、简单命令
+- 2.1关闭应用
+rabbitmqctl stop_app
+- 2.2启动应用
+rabbitmqctl start_app
+- 2.3查看节点状态
+rabbitmqctl status
+- 2.4其他
+>![用户相关1](https://upload-images.jianshu.io/upload_images/2836779-0df874f1a055872f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![用户相关2](https://upload-images.jianshu.io/upload_images/2836779-ec7deb92884335e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![虚拟主机](https://upload-images.jianshu.io/upload_images/2836779-124c162b6dde8368.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![队列](https://upload-images.jianshu.io/upload_images/2836779-2f8e4f9efc9252b4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![集群](https://upload-images.jianshu.io/upload_images/2836779-c7bdb805a42df35a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![节点](https://upload-images.jianshu.io/upload_images/2836779-a66ee2fb41cc5705.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+### 三、基本组件
+> ![Exchange](https://upload-images.jianshu.io/upload_images/2836779-1a64cb8448addc90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Topic方式](https://upload-images.jianshu.io/upload_images/2836779-1d7e438ca0ad081b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Topic方式2](https://upload-images.jianshu.io/upload_images/2836779-403042d1d6821ed2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Fanout方式](https://upload-images.jianshu.io/upload_images/2836779-d0d569b6ee41a9ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Fanout方式2](https://upload-images.jianshu.io/upload_images/2836779-b259a90b29b65f12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-
+### 四、补充
+![补充1](https://upload-images.jianshu.io/upload_images/2836779-481b5be65515a107.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
